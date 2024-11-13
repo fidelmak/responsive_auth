@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Request a Quote</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .quote-container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        /* Change border color of textareas on focus */
+        .form-control:focus {
+            border-color: #28a745; /* Bootstrap's green color */
+            box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25); /* Optional: add a shadow effect */
+        }
+    </style>
+</head>
+<body>
+
+<div class="quote-container">
+    <h2 class="text-center mb-4">Request a Quote</h2>
+    <form id="quoteRequestForm">
+        <div class="form-group">
+            <label for="fullName">Full Name:</label>
+            <input type="text" class="form-control" id="fullName" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" class="form-control" id="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="serviceType">Service Type:</label>
+            <select class="form-control" id="serviceType" required>
+                <option value="" disabled selected>Select a service</option>
+                <option value="Standard Delivery">Standard Delivery</option>
+                <option value="Express Delivery">Express Delivery</option>
+                <option value="International Shipping">International Shipping</option>
+                <option value="Freight Shipping">Freight Shipping</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="pickupAddress">Pickup Address:</label>
+            <textarea class="form-control" id="pickupAddress" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="deliveryAddress">Delivery Address:</label>
+            <textarea class="form-control" id="deliveryAddress" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="packageDetails">Package Details:</label>
+            <textarea class="form-control" id="packageDetails" rows="3" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="message">Additional Message:</label>
+            <textarea class="form-control" id="message" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success btn-block">Request Quote</button>
+    </form>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+<div class="col-lg">
+    <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Reach Out to Us </h1>
+    <p class="lead">At MBH Global Resources LTD, we offer a wide range of logistics solutions designed to meet the specific needs of our clients across various industries. Our approach combines efficiency, reliability, and sustainability, ensuring your goods are handled with the highest level of professionalism and 
+        care. We manage the entire process from start to finish, so you can focus on your core business</p>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+      <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Online Call</button>
+      <button type="button" class="btn btn-outline-secondary btn-lg px-4">Chat</button>
+    </div>
+  </div>

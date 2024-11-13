@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services List</title>
+
+    <!-- Load Telex Font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Telex&display=swap" rel="stylesheet">
+
+    <style>
+        /* Button styles */
+        .text-button {
+            display: inline-block;
+            font-size: 16px;
+            color: #000000;
+            background-color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: 'Telex', sans-serif;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Hover effect for button */
+        .text-button:hover {
+            background-color: #31A752;
+        }
+
+        /* Canvas (modal) styles */
+        .canvas {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 150%; /* Increased height */
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .canvas-content {
+            background-color: white;
+            width: 80%;
+            height: 90%; /* Increased height */
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            width: 30%;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-shadow: 2px 0px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #ccc;
+            color: black;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #ddd;
+        }
+
+        /* Content area styles */
+        .content {
+            width: 70%;
+            padding: 20px;
+            font-size: 18px;
+            color: black;
+            text-align: justify;
+            background-color: #AFE8B1; /* New background color */
+            border-radius: 10px;
+            margin: 10px;
+            font-family: 'Telex', sans-serif;
+        }
+
+        .content h3 {
+            margin-bottom: 10px;
+            font-size: 24px;
+            font-family: 'Telex', sans-serif;
+        }
+
+        /* View More Button */
+        .view-more-btn {
+            display: inline-block;
+            font-size: 16px;
+            color: #ffffff;
+            background-color: #31A752;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: 'Telex', sans-serif;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-more-btn:hover {
+            background-color: #228b22;
+        }
+
+        /* Close button styles */
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Text Button -->
+<button class="text-button" id="servicesButton">Services</button>
+
+<!-- Canvas (Modal) -->
+<div class="canvas" id="servicesCanvas">
+    <button class="close-btn" id="closeCanvas">&times;</button>
+    <div class="canvas-content">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <ul>
+                <li data-content="projectLogistics">Project Logistics</li>
+                <li data-content="airFreight">Air Freight</li>
+                <li data-content="airCharter">Air Charter</li>
+                <li data-content="procurement">Procurement/Supply Chain</li>
+                <li data-content="oceanFreight">Ocean/Sea Freight</li>
+                <li data-content="transportation">Transportation</li>
+                <li data-content="exportPacking">Export Packing</li>
+                <li data-content="insurance">Insurance</li>
+                <li data-content="agriLogistics">Agricultural Logistics</li>
+                <li data-content="autoLogistics">Automotive Logistics</li>
+                <li data-content="constructionLogistics">Construction Logistics</li>
+            </ul>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content" id="contentArea">
+            <!-- Initial content will be set by JavaScript -->
+        </div>
+    </div>
+</div>
+
+<script>
+    // Show the canvas when the button is clicked
+    const servicesButton = document.getElementById('servicesButton');
+    const servicesCanvas = document.getElementById('servicesCanvas');
+    const closeCanvas = document.getElementById('closeCanvas');
+    const contentArea = document.getElementById('contentArea');
+
+    // Load the first service automatically when the canvas opens
+    const loadInitialService = () => {
+        contentArea.innerHTML = '<h3>Project Logistics</h3><p>We handle complex logistics projects with ease, no matter the scale or geographical challenges. Our experienced team works closely with clients to plan and execute logistics strategies that ensure timely delivery, even in the most remote locations. From engineering solutions to contractor coordination, we provide seamless end-to-end project management tailored to your exact specifications.</p><a href="service-page.html" class="view-more-btn">View More</a>';
+    };
+
+    // Event to open the canvas and load initial content
+    servicesButton.addEventListener('click', () => {
+        servicesCanvas.style.display = 'flex';
+        loadInitialService();
+    });
+
+    // Event to close the canvas
+    closeCanvas.addEventListener('click', () => {
+        servicesCanvas.style.display = 'none';
+    });
+
+    // Update content based on clicked sidebar item
+    const sidebarItems = document.querySelectorAll('.sidebar ul li');
+    sidebarItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const serviceContent = item.getAttribute('data-content');
+            switch(serviceContent) {
+                case 'projectLogistics':
+                    contentArea.innerHTML = '<h3>Project Logistics</h3><p>We handle complex logistics projects with ease, no matter the scale or geographical challenges. Our experienced team works closely with clients to plan and execute logistics strategies that ensure timely delivery, even in the most remote locations. From engineering solutions to contractor coordination, we provide seamless end-to-end project management tailored to your exact specifications.</p><a href="service-page.html" class="view-more-btn">View More</a>';
+                    break;
+                case 'airFreight':
+                    contentArea.innerHTML = '<h3>Air Freight</h3><p>Our air freight services ensure your goods reach their destination quickly and safely. Whether you need domestic or international air cargo solutions, we take care of everything—from cargo classification and packaging to delivery. Our global network of highly skilled professionals guarantees that your shipments are delivered on time and in excellent condition, with full compliance to regulations.</p><a href="service-page.html" class="view-more-btn">View More</a>';
+                    break;
+                case 'airCharter':
+                    contentArea.innerHTML = '<h3>Air Charter</h3><p>For urgent or time-sensitive deliveries, our air charter services offer the fastest air-based freight options. We eliminate scheduling delays and ensure your consignments reach their destination without interruption. With dedicated air and ground support, your shipments are always in safe hands.</p><a href="service-page.html" class="view-more-btn">View More</a>';
+                    break;
+                case 'procurement':
+                    contentArea.innerHTML = '<h3>Procurement/Supply Chain</h3><p>We work closely with our clients to optimise their entire supply chain, from procurement to final delivery. Our customised supply chain solutions help reduce complexity, improve efficiency, and cut costs, so your business can stay competitive in today’s fast-paced market.</p><a href="service-page.html" class="view-more-btn">View More</a>';
+                    break;
+                case 'oceanFreight':
+                    contentArea.innerHTML = '<h3>Ocean/Sea Freight</h3><p>We provide comprehensive ocean freight solutions for both large and small businesses. Whether you\'re shipping full container loads (FCL) or less-than-container loads (LCL), we customise our ocean freight services to suit your needs. Our services include vessel chartering, custom brokerage, and door-to-door delivery.</p><a href="service-page.html" class="view-more-btn">View More</a>';
+                    break;
+                case 'transportation':
+                    contentArea.innerHTML = '<h3>Transportation</h3><p>Our transportation services include road, rail, and multimodal transport options, allowing us to deliver goods efficiently and safely to any location. We offer flexible solutions tailored to your unique requirements, including full truckload (FTL), less-than-truckload (LTL), and specialised transport for oversized cargo.</p><a href="service-page.html" class="view-more-btn">View More</a>';
+                    break;
+                case 'exportPacking':
+                    contentArea.innerHTML = '<h3>Export Packing</h3><p>Our export packing services ensure that your goods are securely packed for international shipping. We provide custom crating, palletising, and shrink wrapping to protect your products during transit. Our packing solutions are compliant with international shipping regulations, reducing the risk of damage and delays.</p><a href="service-page.html" class="view-more-btn">View More</a>';
+                    break;
+                case 'insurance':
+                    contentArea.innerHTML = '<h3>Insurance</h3><p>We offer comprehensive insurance services for your shipments. Whether your goods are transported by air, sea, or land, we ensure they are fully protected, providing you with peace of mind throughout the journey.</p><a href="service-page.html" class="view-more-btn">View More</a>';
+                    break;
+                case 'agriLogistics':
+                    contentArea.innerHTML = '<h3>Agricultural Logistics</h3><p>We provide specialised logistics solutions for the agricultural industry. From storage and transportation to processing and delivery, we manage the entire supply chain for agricultural products.</p><a href="service-page.html" class="view-more-btn">View More</a>';
+                    break;
+                case 'autoLogistics':
+                    contentArea.innerHTML = '<h3>Automotive Logistics</h3><p>Our automotive logistics solutions are designed to streamline your supply chain. We provide comprehensive transport, warehousing, and inventory management services for the automotive industry.</p><a href="service-page.html" class="view-more-btn">View More</a>';
+                    break;
+                case 'constructionLogistics':
+                    contentArea.innerHTML = '<h3>Construction Logistics</h3><p>We offer logistics solutions for the construction industry, managing the transportation of materials and equipment to construction sites. We ensure the timely delivery of your materials to keep your projects on track.</p><a href="service-page.html" class="view-more-btn">View More</a>';
+                    break;
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

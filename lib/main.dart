@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'customs/landing.dart';
+import 'BetaStore/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,10 +19,11 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'ScreenUtil',
           theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            colorScheme: ColorScheme.fromSeed(
+                seedColor: const Color.fromARGB(255, 133, 133, 134)),
             useMaterial3: true,
           ),
-          home: Landing(), //  const HomePage(),
+          home: HomePage(),
         );
       },
     );
